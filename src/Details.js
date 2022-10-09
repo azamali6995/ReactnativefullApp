@@ -1,20 +1,21 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
-function Home({ navigation }) {
-    const handleNavigate = () => { navigation.navigate('Details') }
+
+function Details({ navigation }) {
+    const handleNavigate = () => { navigation.navigate('MyAlfha') }
     return (
         <View style={styles.container} >
             <TouchableOpacity onPress={() => { handleNavigate() }}>
-                <Text>{"Home"}</Text>
+                <Text>{"Details"}</Text>
             </TouchableOpacity>
             <Text>
-                This is Home Screen
+                This is Details Screen
             </Text>
         </View>
     )
 }
 
-export default Home
+export default Details
 
 const styles = StyleSheet.create({
     container: {
