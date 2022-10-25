@@ -6,80 +6,57 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //Auth
+import SplashScreen from './src/SplashScreen';
 import Login from './src/Auth/Login';
+import SignUp from './src/Auth/SignUp';
+
 //Stack
 import Home from './src/Stack/Home'
-import About from './src/Stack/About';
 import Contact from './src/Stack/Contact';
-//Drawer
-import Location from './src/Drawer/Location';
-import MyAlfha from './src/Drawer/MyAlfha'; 
-//Tab 
-import Profile from './src/Tab/Profile'; 
-import Setting from './src/Tab/Setting';
-// import Contact from './src/Contact';
 
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
-const screenOptionStyle = {
-  headerStyle: {
-    backgroundColor: "#9AC4F8",
-  },
-  headerTintColor: "white",
-  headerBackTitle: "Back",
+
+
+const Auth = () => {
+  return (
+    <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="SignUp" component={SignUp} />
+    </Stack.Navigator>
+  );
 };
+
+const DrawerNavigationRoutes = () => {
+  return (
+    <Drawer.Navigator screenOptions={{ headerShown: false }}>
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Contact" component={Contact} />
+    </Drawer.Navigator>
+  );
+}
 
 
 function App() {
   return (
     <NavigationContainer>
-      <Login />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
+        <Stack.Screen name="Auth" component={Auth} />
+        <Stack.Screen name="DrawerNavigationRoutes" component={DrawerNavigationRoutes} />
+      </Stack.Navigator>
     </NavigationContainer>
   )
 }
 export default App
 
-const authNavigator =()=>{
-  <Stack.Navigator screenOptions={{ headerShown:false }}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="About" component={About} />
-  </Stack.Navigator>
-}  
 
-const MainStackNavigator = () => {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown:false }}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="About" component={About} />
-    </Stack.Navigator>
-  )
-}
 
-const ContactStackNavigator = () => {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown:false }} >
-      <Stack.Screen name="Contact" component={Contact} />
-    </Stack.Navigator>
-  );
-}
 
-const BottomTabNavigator = () => {
-  return (
-    <Tab.Navigator screenOptions={{ headerShown:false }}>
-      <Tab.Screen name="Home" component={MainStackNavigator} />
-      <Tab.Screen name="Contact" component={ContactStackNavigator} />
-    </Tab.Navigator>
-  );
-};
 
-const DrawerNavigator = () => {
-  return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={BottomTabNavigator} />
-      <Drawer.Screen name="Contact" component={ContactStackNavigator} />
-    </Drawer.Navigator>
-  );
-}
+
+
+

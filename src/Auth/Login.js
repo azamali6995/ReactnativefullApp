@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Dimensions, SafeAreaView } from "react-native"
 import { ScrollView } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 var { height, width } = Dimensions.get('window');
 
-function Login() {
+function Login({navigation}) {
     const [userEmail, setUserEmail] = useState()
     const [userPassword, setUserPassword] = useState()
     const [loading, SetLoading] = useState(false)
 
+    const handleLogin =async()=>{
+        // await AsyncStorage.setItem('@storage_Key', userEmail)
+        navigation.navigate('SignUp')
+    }
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -18,7 +23,7 @@ function Login() {
                         value={userEmail}
                         onChange={text => setUserEmail(text)}
                         placeholder="Enter Email"
-                        placeholderTextColor="#8b9cb5"
+                        // placeholderTextColor="#8b9cb5"
                         keyboardType="email-address"
                         style={styles.inputstyle}    
                     />
@@ -28,13 +33,13 @@ function Login() {
                         value={userPassword}
                         onChange={text => setUserPassword(text)}
                         placeholder="Enter Password"
-                        placeholderTextColor="#8b9cb5"
+                        // placeholderTextColor="#8b9cb5"
                         secureTextEntry={true}
                         style={styles.inputstyle}    
                     />
                 </View>
                 <View style={styles.buttonStyle}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress= {()=> handleLogin()}>
                         <Text>Submit</Text>
                     </TouchableOpacity>
                 </View>
