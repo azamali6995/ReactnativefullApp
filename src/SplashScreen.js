@@ -13,11 +13,11 @@ function SplashScreen({ navigation }) {
     }, [])
     const handleNavigation = () => {
         setTimeout(() => {
-            navigation.navigate("Auth")
-        }, 5000)
+            // navigation.reset("Auth")
+            navigation.reset({index: 0,routes: [{ name: 'Auth' }]})
+
+        }, 3000)
     }
-
-
     return (
         <View style={{ flex: 1, backgroundColor: '#307ecc' }}>
             <StatusBar backgroundColor="#307ecc" style="dark-content" />

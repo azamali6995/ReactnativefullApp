@@ -1,13 +1,20 @@
 import React from "react";
-import { View, Button, Text, StyleSheet } from "react-native";
-
+import { View, Button, Text, StyleSheet, TouchableOpacity } from "react-native";
+// import HeaderScrren from "../HeaderScrren";
+import Header from "../Header";
 const Home = ({ navigation }) => {
   return (
     <View style={styles.center}>
-      <Text>This is the home screen</Text>
-      <Button
-        title="Go to About Screen"
-        onPress={() => navigation.navigate("About")} // We added an onPress event which would navigate to the About screen
+      <Header
+      
+        leftComponent=  {<View>
+         <Text>
+          
+         </Text>
+
+        </View>  }
+        centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+        rightComponent={{ icon: 'home', color: '#fff' }}
       />
     </View>
   );
@@ -16,9 +23,7 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   center: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
+    // backgroundColor:"red"
   },
 });
 

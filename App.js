@@ -5,6 +5,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import HeaderScrren from './src/Header';
+
+
 //Auth
 import SplashScreen from './src/SplashScreen';
 import Login from './src/Auth/Login';
@@ -33,9 +36,18 @@ const Auth = () => {
 const DrawerNavigationRoutes = () => {
   return (
     <Drawer.Navigator screenOptions={{ headerShown: false }}>
-      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Home" component={MyTabs} />
       <Drawer.Screen name="Contact" component={Contact} />
     </Drawer.Navigator>
+  );
+}
+
+function MyTabs() {
+  return (
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Contact" component={Contact} />
+    </Tab.Navigator>
   );
 }
 
@@ -44,6 +56,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {/* <Stack.Screen name="HeaderScrren" component={HeaderScrren} /> */}
+
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="DrawerNavigationRoutes" component={DrawerNavigationRoutes} />
